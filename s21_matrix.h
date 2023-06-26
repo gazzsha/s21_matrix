@@ -1,3 +1,5 @@
+#ifndef S21_MATRIX_H
+#define S21_MATRIX_H
 #include <stdlib.h> 
 #include <stdio.h>
 #include <string.h>
@@ -10,7 +12,7 @@ typedef struct matrix_struct {
     int columns;
 } matrix_t;
 
-
+enum { OK = 0, INCORRECT_MATRIX = 1, CALC_ERROR = 2, MALLOC_FAILED = 3 };
 // support functions 
 void s21_set_null_matrix(matrix_t * result );
 void print_matrix(matrix_t result);
@@ -32,3 +34,4 @@ int s21_transpose(matrix_t *A, matrix_t *result);
 int s21_calc_complements(matrix_t *A, matrix_t *result);
 int s21_determinant(matrix_t *A, double *result);
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
+#endif

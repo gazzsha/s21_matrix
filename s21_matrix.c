@@ -25,6 +25,7 @@ void s21_remove_matrix(matrix_t *A) {
       free(A->matrix[i]);
     }
     free(A->matrix);
+    A->matrix = NULL;
     A->rows = 0;
     A->columns = 0;
   }
@@ -110,7 +111,9 @@ int s21_mult_number(matrix_t *A, double number, matrix_t *result) {
     return_value = s21_create_matrix(A->rows, A->columns, result);
     for (int i = 0; i < A->rows; ++i) {
       for (int j = 0; j < A->columns; ++j) {
-        result->matrix[i][j] = A->matrix[i][j] * number;
+        if (A->matrix[i][j] != 0.0f && number != 0.0f) {
+          result->matrix[i][j] = A->matrix[i][j] * number;
+        }
       }
     }
   }
@@ -128,8 +131,8 @@ int s21_mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
   } else {
     return_value = s21_create_matrix(A->rows, B->columns, result);
     for (int i = 0; i < A->rows; i++) {
-      for (int k = 0; k < A->columns; k++) {
-        for (int j = 0; j < B->columns; j++) {
+      for (int k = 0; k < B->columns; k++) {
+        for (int j = 0; j < A->columns; j++) {
           result->matrix[i][k] += A->matrix[i][j] * B->matrix[j][k];
         }
       }
@@ -163,17 +166,24 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
     return_value = 1;
   } else if (A->rows != A->columns) {
     return_value = 2;
+  } else if (A->rows == 1) {
+    return_value = 2;
   } else {
-    int sign = 1;
+    double sign = 1.0f;
     return_value = s21_create_matrix(A->rows, A->columns, result);
     for (int i = 0; i < A->rows; i++) {
       for (int j = 0; j < A->columns; j++) {
         matrix_t intermediate_matrix = {0};
         getNewMatrix(A, &intermediate_matrix, i, j, A->rows - 1);
+        if (((i + j) % 2) == 0)
+          sign = 1.0f;
+        else
+          sign = (-1.0f);
+        double matrix_determinant =
+            s21_matrix_determinant(&intermediate_matrix);
         result->matrix[i][j] =
-            sign * s21_matrix_determinant(&intermediate_matrix);
+            (matrix_determinant == 0.0f ? 1 : sign) * matrix_determinant;
         s21_remove_matrix(&intermediate_matrix);
-        sign = -sign;
       }
     }
   }
@@ -202,6 +212,13 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
     return_value = 1;
   } else if (A->rows != A->columns) {
     return_value = 2;
+  } else if (A->rows == 1) {
+    if ((A->matrix[0][0]) == 0.0f)
+      return_value = 2;
+    else {
+      return_value = s21_create_matrix(A->rows, A->columns, result);
+      result->matrix[0][0] = 1.0f / A->matrix[0][0];
+    }
   } else {
     double determitant = 0.0f;
     determitant = s21_matrix_determinant(A);

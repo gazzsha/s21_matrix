@@ -4,7 +4,7 @@ START_TEST(test_one_by_one) {
   matrix_t m = {0};
   matrix_t result = {0};
   int codec = s21_create_matrix(1, 1, &m);
-  if (codec) {
+  if (!codec) {
     int code = s21_calc_complements(&m, &result);
     ck_assert_int_eq(code, CALC_ERROR);
     s21_remove_matrix(&m);
@@ -38,7 +38,7 @@ START_TEST(test_normal) {
   matrix_t result = {0};
   int code1 = s21_create_matrix(3, 3, &m);
   int code2 = s21_create_matrix(3, 3, &expected);
-  if (code1 && code2) {
+  if (!code1 && !code2) {
     m.matrix[0][0] = 1;
     m.matrix[0][1] = 2;
     m.matrix[0][2] = 3;

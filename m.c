@@ -1,89 +1,49 @@
 // #include "s21_matrix.h"
 
+// double get_rand(double min, double max) {
+//   double val = (double)rand() / RAND_MAX;
+//   return min + val * (max - min);
+// }
+
 // int main() {
-  //     matrix_t A = {0};
-  //     matrix_t result = {0};
-  //     matrix_t result2 = {0};
-  //     printf("%d\n",s21_create_matrix(3,3,&A));
+//  int res = 0;
+//   matrix_t A = {0};
+//   matrix_t Z = {0};
+//   matrix_t X = {0};
 
-  //     for (int i = 0; i < A.rows; i++) {
-  //         for (int j = 0; j < A.columns ; ++j) {
-  //             A.matrix[i][j] = 1 * j;
-  //         }
-  //     }
-  //       print_matrix(A);
-  //      matrix_t B;
-  //     s21_create_matrix(3,3,&B);
-  //     for (int i = 0; i < B.rows; i++) {
-  //         for (int j = 0; j < B.columns ; ++j) {
-  //             B.matrix[i][j] = 2 * j;
-  //         }
-  //     }
-  //     print_matrix(B);
-  //    printf("%d\n",s21_sub_matrix(&A,&B,&result));
-  // //    printf("%d\n",s21_ы_matrix(&A,&B));
-  //     print_matrix(result);
-  //     double n = 1.99954;
-  //     printf("%d\n",s21_mult_number(&A,n,&result2));
-  //     print_matrix(result2);
-  //      s21_remove_matrix(&A);
-  //      s21_remove_matrix(&B);
-  //    s21_remove_matrix(&result);
-  //    s21_remove_matrix(&result2);
-  //    printf("--------------------\n");
-  //    matrix_t a ={0};
-  //    matrix_t b = {0};
-  //    matrix_t c = {0};
-  //     printf("%d\n",s21_create_matrix(1,3,&a));
-  //     printf("%d\n",s21_create_matrix(3,3,&b));
+//   s21_create_matrix(3, 3, &A);
+//   A.matrix[0][0] = 1.0;
+//   A.matrix[0][1] = 2.0;
+//   A.matrix[0][2] = 3.0;
+//   A.matrix[1][0] = 4.0;
+//   A.matrix[1][1] = 5.0;
+//   A.matrix[1][2] = 6.0;
+//   A.matrix[2][0] = 8.0;
+//   A.matrix[2][1] = 6.0;
+//   A.matrix[2][2] = 9.0;
 
-  //     double m  = 1;
-  //     for (int i = 0; i < a.rows; i++) {
-  //         for (int j = 0; j < a.columns ; ++j,m++) {
-  //             a.matrix[i][j] = m ;
-  //         }
-  //     }
-  //     double  v = 1;
-  //      for (int i = 0; i < b.rows; i++) {
-  //         for (int j = 0; j < b.columns ; ++j,v++) {
-  //             b.matrix[i][j] = v;
-  //         }
-  //     }
-  //     print_matrix(a);
-  //     printf("%d\n",s21_mult_matrix(&a,&b,&c));
-  //     s21_remove_matrix(&a);
-  //     matrix_t d = {0};
-  //     printf("%d\n",s21_transpose(&c,&d));
-  //     print_matrix(d);
-  //     print_matrix(c);
-  //     printf("--------------------\n");
-  //     print_matrix(b);
-  //     printf("%f\n",s21_matrix_determinant(&b));
-  //       s21_remove_matrix(&b);
-  //     s21_remove_matrix(&c);
-  //     s21_remove_matrix(&d);
-  //   printf("--------------------\n");
+//   s21_inverse_matrix(&A, &Z);
 
-//   matrix_t aa = {0}, cc = {0}, dd = {0};
-//   s21_create_matrix(3, 3, &aa);
-//   aa.matrix[0][0] = 2;
-//   aa.matrix[0][1] = 5;
-//   aa.matrix[0][2] = 7;
-//   aa.matrix[1][0] = 6;
-//   aa.matrix[1][1] = 3;
-//   aa.matrix[1][2] = 4;
-//   aa.matrix[2][0] = 5;
-//   aa.matrix[2][1] = -2;
-//   aa.matrix[2][2] = -3;
-//   print_matrix(aa);
-//   // double  res = 0;
-//   printf("%d\n", s21_calc_complements(&aa, &cc));
-//   printf("%d\n", s21_inverse_matrix(&aa, &dd));
-//   print_matrix(cc);
-//   print_matrix(dd);
-//   s21_remove_matrix(&aa);
-//   s21_remove_matrix(&cc);
-//   s21_remove_matrix(&dd);
+//   s21_create_matrix(3, 3, &X);
+
+//   X.matrix[0][0] = -3.0 / 5.0;
+//   X.matrix[0][1] = 0.0;
+//   X.matrix[0][2] = 1.0 / 5.0;
+//   ;
+//   X.matrix[1][0] = -4.0 / 5.0;
+//   X.matrix[1][1] = 1.0;
+//   X.matrix[1][2] = -2.0 / 5.0;
+//   X.matrix[2][0] = 16.0 / 15.0;
+//   X.matrix[2][1] = -2.0 / 3.0;
+//   X.matrix[2][2] = 1.0 / 5.0;
+
+//   res = s21_eq_matrix(&X, &Z);
+//   print_matrix(X);
+//   print_matrix(Z);
+//   s21_remove_matrix(&A);
+//   s21_remove_matrix(&X);
+//   s21_remove_matrix(&Z);
+//   printf("%d\n",res);
 
 //   return 0;
 // }

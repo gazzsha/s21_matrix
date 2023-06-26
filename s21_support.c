@@ -19,11 +19,16 @@ void print_matrix(matrix_t result) {
 
 // срравние чисел double, 1 -OK, 0 - NOT OK
 int comparison_double(double x, double y) {
-  char str_x[100] = {0};
-  char str_y[100] = {0};
+  int flag = 0;
+  char str_x[1000] = {0};
+  char str_y[1000] = {0};
   sprintf(str_x, "%.6f", x);
   sprintf(str_y, "%.6f", y);
-  return (strcmp(str_x, str_y)) == 0 ? 1 : 0;
+  if (strcmp(str_x, str_y) == 0)
+    flag = 1;
+  else
+    flag = 0;
+  return flag;
 }
 
 // 1 - NULL, 0 - NOT NULL
