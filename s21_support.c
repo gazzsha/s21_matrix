@@ -7,16 +7,6 @@ void s21_set_null_matrix(matrix_t* result) {
     }
   }
 }
-
-void print_matrix(matrix_t result) {
-  for (int i = 0; i < result.rows; i++) {
-    for (int j = 0; j < result.columns; j++) {
-      printf("%f ", result.matrix[i][j]);
-    }
-    printf("\n");
-  }
-}
-
 // срравние чисел double, 1 -OK, 0 - NOT OK
 int comparison_double(double x, double y) {
   int flag = 0;

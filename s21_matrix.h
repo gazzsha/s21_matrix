@@ -1,27 +1,26 @@
 #ifndef S21_MATRIX_H
 #define S21_MATRIX_H
-#include <stdlib.h> 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #define SUCCESS 1
 #define FAILURE 0
 
 typedef struct matrix_struct {
-    double** matrix;
-    int rows;
-    int columns;
+  double **matrix;
+  int rows;
+  int columns;
 } matrix_t;
 
 enum { OK = 0, INCORRECT_MATRIX = 1, CALC_ERROR = 2, MALLOC_FAILED = 3 };
-// support functions 
-void s21_set_null_matrix(matrix_t * result );
-void print_matrix(matrix_t result);
+// support functions
+void s21_set_null_matrix(matrix_t *result);
 int comparison_double(double x, double y);
-int s21_is_null_matrix(matrix_t * result);
-int s21_check_accuracy_size(matrix_t * A,matrix_t * B);
-int s21_wrong_matrix(matrix_t * result);
-double s21_matrix_determinant(matrix_t * result);
-void getNewMatrix(matrix_t * A, matrix_t * result,int n,int m, int new_size);
+int s21_is_null_matrix(matrix_t *result);
+int s21_check_accuracy_size(matrix_t *A, matrix_t *B);
+int s21_wrong_matrix(matrix_t *result);
+double s21_matrix_determinant(matrix_t *result);
+void getNewMatrix(matrix_t *A, matrix_t *result, int n, int m, int new_size);
 // main functions
 int s21_create_matrix(int rows, int columns, matrix_t *result);
 void s21_remove_matrix(matrix_t *A);

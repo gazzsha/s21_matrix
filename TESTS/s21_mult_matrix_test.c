@@ -9,12 +9,10 @@ START_TEST(mult_matrix) {
   s21_create_matrix(cols, rows, &mtx);
 
   for (int i = 0; i < rows; i++)
-    for (int j = 0; j < cols; j++)
-      m.matrix[i][j] = get_rand(-10e10, 10e10);
+    for (int j = 0; j < cols; j++) m.matrix[i][j] = get_rand(-10e10, 10e10);
 
   for (int i = 0; i < cols; i++)
-    for (int j = 0; j < rows; j++)
-      mtx.matrix[i][j] = get_rand(-10e10, 10e10);
+    for (int j = 0; j < rows; j++) mtx.matrix[i][j] = get_rand(-10e10, 10e10);
 
   matrix_t check = {0};
   s21_create_matrix(m.rows, mtx.columns, &check);
@@ -47,12 +45,10 @@ START_TEST(simple_mult) {
   s21_create_matrix(cols, rows, &mtx);
 
   for (int i = 0, c = 1; i < rows; i++)
-    for (int j = 0; j < cols; j++)
-      m.matrix[i][j] = c++;
+    for (int j = 0; j < cols; j++) m.matrix[i][j] = c++;
 
   for (int i = 0, c = 7; i < cols; i++)
-    for (int j = 0; j < rows; j++)
-      mtx.matrix[i][j] = c++;
+    for (int j = 0; j < rows; j++) mtx.matrix[i][j] = c++;
 
   matrix_t check = {0};
   s21_create_matrix(m.rows, mtx.columns, &check);

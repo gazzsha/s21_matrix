@@ -6,8 +6,7 @@ START_TEST(determinant1) {
   s21_create_matrix(size, size, &m);
 
   for (int i = 0; i < size; i++)
-    for (int j = 0; j < size; j++)
-      m.matrix[i][j] = j;
+    for (int j = 0; j < size; j++) m.matrix[i][j] = j;
   double res = 0;
   int code = s21_determinant(&m, &res);
   ck_assert_double_eq_tol(res, 0, 1e-6);
@@ -23,8 +22,7 @@ START_TEST(determinant2) {
   s21_create_matrix(size, size, &m);
 
   for (int i = 0; i < size; i++)
-    for (int j = 0; j < size; j++)
-      m.matrix[i][j] = j + i;
+    for (int j = 0; j < size; j++) m.matrix[i][j] = j + i;
 
   double res = 0;
   int code = s21_determinant(&m, &res);
